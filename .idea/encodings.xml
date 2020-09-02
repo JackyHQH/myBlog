@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-blog-message" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-blog-message/hqh-blog-message-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-blog-message/hqh-blog-message-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-blog-message/hqh-blog-message-rpc-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-blog-message/hqh-blog-message-rpc-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-blog-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-mybatis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-spring" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hqh-springboot-starter" charset="UTF-8" />
+  </component>
+</project>

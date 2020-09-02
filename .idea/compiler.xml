@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hqh-spring" />
+        <module name="hqh-blog-message-common" />
+        <module name="hqh-blog-message-rpc-service" />
+        <module name="hqh-springboot-starter" />
+        <module name="hqh-blog-message-rpc-api" />
+        <module name="hqh-blog-web" />
+        <module name="hqh-common" />
+        <module name="hqh-blog-message-dao" />
+        <module name="hqh-mybatis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="blog-message" target="1.5" />
+      <module name="oms-setting-common" target="1.8" />
+      <module name="oms-setting-dao" target="1.8" />
+      <module name="oms-setting-rpc-api" target="1.8" />
+      <module name="oms-setting-rpc-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hqh-blog-message-common" options="-parameters" />
+      <module name="hqh-blog-message-dao" options="-parameters" />
+      <module name="hqh-blog-message-rpc-api" options="-parameters" />
+      <module name="hqh-blog-message-rpc-service" options="-parameters" />
+      <module name="hqh-blog-web" options="-parameters" />
+      <module name="hqh-common" options="-parameters" />
+      <module name="hqh-mybatis" options="-parameters" />
+      <module name="hqh-spring" options="-parameters" />
+      <module name="hqh-springboot-starter" options="-parameters" />
+      <module name="oms-setting-common" options="-parameters" />
+      <module name="oms-setting-dao" options="-parameters" />
+      <module name="oms-setting-rpc-api" options="-parameters" />
+      <module name="oms-setting-rpc-service" options="-parameters" />
+    </option>
+  </component>
+</project>

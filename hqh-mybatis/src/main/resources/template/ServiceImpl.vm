@@ -1,0 +1,28 @@
+package ${package_name}.rpc.service.impl;
+
+import com.hqh.mybatis.base.BaseServiceImpl;
+import ${package_name}.dao.mapper.${model}Mapper;
+import ${package_name}.dao.model.${model};
+import ${package_name}.dao.model.${model}Example;
+import ${package_name}.rpc.api.${model}Service;
+import org.apache.dubbo.config.annotation.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+* ${model}Service实现
+*/
+@Service(
+version = "1.0",
+application = "${dubbo.application.id}",
+protocol = "${dubbo.protocol.id}",
+registry = "${dubbo.registry.id}")
+public class ${model}ServiceImpl extends BaseServiceImpl<${model}Mapper, ${model}, ${model}Example,${modelIdType}> implements ${model}Service {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(${model}ServiceImpl.class);
+
+    @Autowired
+    ${model}Mapper ${mapper}Mapper;
+
+}

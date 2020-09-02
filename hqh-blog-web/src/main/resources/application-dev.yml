@@ -1,0 +1,86 @@
+spring:
+  profiles: dev
+  application:
+    name: blog-web
+  aop:
+    proxy-target-class: true
+    auto: true
+  servlet:
+    multipart:
+      max-file-size:  3MB
+      #总上传的数据大小(上传多个文件时总大小)
+      max-request-size: 10MB
+      #上传文件的临时目录 （一般情况下不用特意修改）
+      enabled: true
+      location:
+  # REDIS基础配置
+  redis:
+    timeout: 6000
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 50
+        max-active: 100
+        max-wait: -1ms
+    host: 127.0.0.1
+    port: 6379
+jetcache:
+  statIntervalMinutes: 0
+  areaInCacheName: false
+  local:
+    default:
+      type: caffeine
+      limit: 100
+      keyConvertor: fastjson
+      expireAfterWriteInMillis: 100000
+  remote:
+    default:
+      type: redis.springdata
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+shiro:
+  session:
+    #shiro session前缀
+    session-prefix : "chain-redis-session"
+    #shiro session 在redis过期时间是(分钟)
+    session-time : 1800
+  cache:
+    #shiro缓存前缀
+    cache-prefix : "chain-redis-cache"
+    #shiro缓存在redis过期时间是(分钟)
+    cache-time : 180
+swagger:
+  enable: true
+  serviceUrl: http://localhost:8081
+  title: OMS chain web resource word
+  description: OMS门店管理系统接口文档
+  version: 1.0.0
+  markdowns: classpath:markdown/*
+server:
+  port: 8081
+
+dubbo:
+  application:
+    name: blog-web
+    id : blog-web
+  registry:
+      id: blog-web-register
+      address: 127.0.0.1:2181
+      protocol: zookeeper
+      timeout: 30000
+  consumer:
+    client: netty4
+    timeout: 30000
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: "20890"
+    status: server
+    threads: 100
+    server: netty4
+logging:
+  config: classpath:log4j2-spring.xml
+jim:
+  bindIp: 127.0.0.1
+  port: 8888

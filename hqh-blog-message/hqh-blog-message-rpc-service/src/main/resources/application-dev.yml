@@ -1,0 +1,98 @@
+spring:
+  profiles: dev
+  application:
+    name: oms-hqh-blog-message
+  redis:
+    timeout: 6000ms
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 50
+        max-active: 100
+        max-wait: -1ms
+    host: 127.0.0.1
+    port: 6379
+jetcache:
+  statIntervalMinutes: 0
+  areaInCacheName: false
+  local:
+    default:
+      type: caffeine
+      limit: 100
+      keyConvertor: fastjson
+      expireAfterWriteInMillis: 100000
+  remote:
+    default:
+      type: redis.springdata
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+jeesuite:
+  mybatis:
+    crudDriver: default
+    dbType: Mysql
+    cacheEnabled: false
+    nullValueCache: false
+    cacheExpireSeconds: 300
+    dynamicExpire: false
+    rwRouteEnabled: true
+    paginationEnabled: true
+mybatis:
+  type-aliases-package: com.hqh.blog.message.dao.model
+  mapper-locations: classpath:com/hqh/blog/message/dao/mapper/*.xml
+#mysql global config
+db:
+  driverClass: com.mysql.jdbc.Driver
+  initialSize: 2
+  minIdle: 1
+  maxActive: 10
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  testOnBorrow: false
+  testOnReturn: false
+#master
+master:
+  db:
+    url: jdbc:mysql://106.53.27.76:3306/diary?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: J2obtnd+Bm/GQpcCSJhCPg==
+    initialSize: 2
+    minIdle: 2
+    maxActive: 20
+#slave ....
+slave1:
+  db:
+    url: jdbc:mysql://106.53.27.76:3306/diary?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: J2obtnd+Bm/GQpcCSJhCPg==
+    initialSize: 2
+    minIdle: 2
+    maxActive: 20
+dubbo:
+  application:
+    name: hqh-blog-message-rpc-service
+    id: hqh-blog-message-rpc-service
+    qos-enable: false
+    owner: HQH
+    organization: TheHeaven
+  registry:
+    id: hqh-blog-message-rpc-service-register
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+    timeout: 1200000
+  # @DubboComponentScan\u52A0\u5728\u4E3B\u7C7BDubboProviderApplication\u4E0A\uFF0C\u5219\u53EF\u4EE5\u4E0D\u914D\u7F6Edubbo.scan.basePackages
+  #  scan:
+  #    basePackages: com.sqshine.dubbo.provider.service
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: "20881"
+    status: server
+    threads: 200
+    server: netty4
+#  provider:
+#    server: netty4
+logging:
+  config: classpath:log4j2-spring.xml
+
