@@ -20,7 +20,7 @@ import java.util.TimeZone;
  */
 @SpringBootApplication(exclude={DruidDataSourceAutoConfigure.class, DataSourceAutoConfiguration.class})
 @EnableMethodCache(basePackages = "com.hqh.blog.web")
-//@ComponentScan(basePackages = "com.hqh.blog.web.service")
+//@ComponentScan(basePackages = "com.hqh.blog.web.aop")
 @EnableCreateCacheAnnotation
 @ServletComponentScan
 public class BlogWebApplication {

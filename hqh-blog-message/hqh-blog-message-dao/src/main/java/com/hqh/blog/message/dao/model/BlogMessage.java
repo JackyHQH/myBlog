@@ -3,84 +3,39 @@ package com.hqh.blog.message.dao.model;
 import java.io.Serializable;
 
 public class BlogMessage implements Serializable {
-    /**
-     * 留言id
-     *
-     * @mbg.generated
-     */
-    private Long id;
+    private Integer id;
 
-    /**
-     * 父级id
-     *
-     * @mbg.generated
-     */
-    private Long pid;
+    private Integer pid;
 
-    /**
-     * 用户id
-     *
-     * @mbg.generated
-     */
     private Integer userId;
 
-    /**
-     * 用户姓名
-     *
-     * @mbg.generated
-     */
     private String userName;
 
-    /**
-     * 用户头像
-     *
-     * @mbg.generated
-     */
     private String userHeadImg;
 
-    /**
-     * 定位地址
-     *
-     * @mbg.generated
-     */
     private String location;
 
-    /**
-     * 留言时间
-     *
-     * @mbg.generated
-     */
     private Long createTime;
 
-    /**
-     * 更新时间
-     *
-     * @mbg.generated
-     */
     private Long updateTime;
 
-    /**
-     * 留言内容
-     *
-     * @mbg.generated
-     */
     private String message;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(Long pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 

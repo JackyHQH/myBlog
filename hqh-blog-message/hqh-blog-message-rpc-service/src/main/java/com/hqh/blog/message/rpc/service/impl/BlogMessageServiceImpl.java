@@ -31,16 +31,8 @@ public class BlogMessageServiceImpl extends BaseServiceImpl<BlogMessageMapper, B
 
     @Override
     public List<BlogMessage> selectAllMessage() {
-
-        try {
-            Thread.sleep(200);
-            System.out.println("2222----");
-            tools.testDelay();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        BlogMessageExample blogMessageExample = new BlogMessageExample();
-//        blogMessageExample.createCriteria().andPidEqualTo(0L);
-        return null;
+        BlogMessageExample blogMessageExample = new BlogMessageExample();
+        blogMessageExample.createCriteria().andPidEqualTo(0);
+        return blogMessageMapper.selectByExample(blogMessageExample);
     }
 }

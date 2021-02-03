@@ -24,6 +24,7 @@ spring:
         max-wait: -1ms
     host: 127.0.0.1
     port: 6379
+    password: Hqh1995@@@
 jetcache:
   statIntervalMinutes: 0
   areaInCacheName: false

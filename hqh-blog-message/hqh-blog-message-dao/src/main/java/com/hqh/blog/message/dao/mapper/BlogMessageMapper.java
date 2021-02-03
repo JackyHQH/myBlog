@@ -10,27 +10,21 @@ public interface BlogMessageMapper {
 
     int deleteByExample(BlogMessageExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(BlogMessage record);
 
     int insertSelective(BlogMessage record);
 
-    List<BlogMessage> selectByExampleWithBLOBs(BlogMessageExample example);
-
     List<BlogMessage> selectByExample(BlogMessageExample example);
 
-    BlogMessage selectByPrimaryKey(Long id);
+    BlogMessage selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") BlogMessage record, @Param("example") BlogMessageExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") BlogMessage record, @Param("example") BlogMessageExample example);
 
     int updateByExample(@Param("record") BlogMessage record, @Param("example") BlogMessageExample example);
 
     int updateByPrimaryKeySelective(BlogMessage record);
-
-    int updateByPrimaryKeyWithBLOBs(BlogMessage record);
 
     int updateByPrimaryKey(BlogMessage record);
 }

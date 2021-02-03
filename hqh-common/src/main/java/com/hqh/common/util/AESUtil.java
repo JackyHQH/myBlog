@@ -131,7 +131,7 @@ public class AESUtil {
 
     public static void main(String[] args) {
         String[] keys = {
-                "123456", "saturn2019","x1E4PA_7hAL","cy@ucl#xjh","wondersgroup130"
+                "A78NpeKM51kbnuRWQj", "saturn2019","x1E4PA_7hAL","cy@ucl#xjh","wondersgroup130"
         };
         String dateStr = DateFormatUtils.format(new Date(),"yyyy-MM-dd");
         System.out.println(dateStr);

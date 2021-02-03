@@ -2,17 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hqh.blog.message.dao.mapper.BlogMessageMapper">
   <resultMap id="BaseResultMap" type="com.hqh.blog.message.dao.model.BlogMessage">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_head_img" jdbcType="VARCHAR" property="userHeadImg" />
     <result column="location" jdbcType="VARCHAR" property="location" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="update_time" jdbcType="BIGINT" property="updateTime" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hqh.blog.message.dao.model.BlogMessage">
-    <result column="message" jdbcType="LONGVARCHAR" property="message" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,27 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, pid, user_id, user_name, user_head_img, location, create_time, update_time
+    id, pid, user_id, user_name, user_head_img, location, create_time, update_time, message
   </sql>
-  <sql id="Blob_Column_List">
-    message
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.hqh.blog.message.dao.model.BlogMessageExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from blog_message
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.hqh.blog.message.dao.model.BlogMessageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -108,17 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from blog_message
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from blog_message
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hqh.blog.message.dao.model.BlogMessageExample">
     delete from blog_message
@@ -131,9 +108,9 @@
       user_name, user_head_img, location, 
       create_time, update_time, message
       )
-    values (#{id,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
       #{userName,jdbcType=VARCHAR}, #{userHeadImg,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{message,jdbcType=LONGVARCHAR}
+      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{message,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hqh.blog.message.dao.model.BlogMessage">
@@ -169,10 +146,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="pid != null">
-        #{pid,jdbcType=BIGINT},
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -193,7 +170,7 @@
         #{updateTime,jdbcType=BIGINT},
       </if>
       <if test="message != null">
-        #{message,jdbcType=LONGVARCHAR},
+        #{message,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -207,10 +184,10 @@
     update blog_message
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.pid != null">
-        pid = #{record.pid,jdbcType=BIGINT},
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
@@ -231,38 +208,24 @@
         update_time = #{record.updateTime,jdbcType=BIGINT},
       </if>
       <if test="record.message != null">
-        message = #{record.message,jdbcType=LONGVARCHAR},
+        message = #{record.message,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
+  <update id="updateByExample" parameterType="map">
     update blog_message
-    set id = #{record.id,jdbcType=BIGINT},
-      pid = #{record.pid,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       user_name = #{record.userName,jdbcType=VARCHAR},
       user_head_img = #{record.userHeadImg,jdbcType=VARCHAR},
       location = #{record.location,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=BIGINT},
-      message = #{record.message,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update blog_message
-    set id = #{record.id,jdbcType=BIGINT},
-      pid = #{record.pid,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_head_img = #{record.userHeadImg,jdbcType=VARCHAR},
-      location = #{record.location,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=BIGINT},
-      update_time = #{record.updateTime,jdbcType=BIGINT}
+      message = #{record.message,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -271,7 +234,7 @@
     update blog_message
     <set>
       <if test="pid != null">
-        pid = #{pid,jdbcType=BIGINT},
+        pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -292,33 +255,22 @@
         update_time = #{updateTime,jdbcType=BIGINT},
       </if>
       <if test="message != null">
-        message = #{message,jdbcType=LONGVARCHAR},
+        message = #{message,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hqh.blog.message.dao.model.BlogMessage">
+  <update id="updateByPrimaryKey" parameterType="com.hqh.blog.message.dao.model.BlogMessage">
     update blog_message
-    set pid = #{pid,jdbcType=BIGINT},
+    set pid = #{pid,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       user_name = #{userName,jdbcType=VARCHAR},
       user_head_img = #{userHeadImg,jdbcType=VARCHAR},
       location = #{location,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=BIGINT},
-      message = #{message,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hqh.blog.message.dao.model.BlogMessage">
-    update blog_message
-    set pid = #{pid,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=INTEGER},
-      user_name = #{userName,jdbcType=VARCHAR},
-      user_head_img = #{userHeadImg,jdbcType=VARCHAR},
-      location = #{location,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
+      message = #{message,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <cache />
 </mapper>
